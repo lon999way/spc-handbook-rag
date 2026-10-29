@@ -1,0 +1,5 @@
+fastembed==0.9.1
+numpy==2.5.4
+pytest==9.2.0
+rank-bm25==0.2.2
+streamlit==1.66.1

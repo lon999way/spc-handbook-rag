@@ -1,0 +1,82 @@
+{
+ "summary": {
+  "tool": {
+   "rag": "5/5",
+   "baseline": "2/5"
+  }
+ },
+ "rows": [
+  {
+   "id": "t01",
+   "type": "tool",
+   "rag_answer": "For your measurements, **Cp = 1.069** and **Cpk = 0.98** [c0011]. Since sample size is only 6 (well below the recommended 50+ [c0011]), these estimates have high uncertainty. More importantly, Cpk < 1.0 indicates the process is **not capable** by standard criteria [c0017]. The process mean (10.05) is offset from the specification midpoint (10.1), penalizing Cpk. Consider either reducing variability or centering the process toward the midpoint to achieve Cpk ≥ 1.0 [c0017].",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm"
+   ],
+   "baseline_answer": "# Process Capability Analysis\n\n**Data Summary:**\n- Measurements: 10.1, 9.9, 10.3, 10.0, 10.2, 9.8\n- Mean (x̄) = 10.05\n- Standard deviation (s) = 0.187\n- LSL = 9.5, USL = 10.7\n\n**Results:**\n\n| Index | Formula | Value |\n|-------|---------|-------|\n| **Cp** | (USL − LSL) / 6σ | **1.07** |\n| **Cpu** | (USL − x̄) / 3σ | 1.16 |\n| **Cpl** | (x̄ − LSL) / 3σ | 0.98 |\n| **Cpk** | min(Cpu, Cpl) | **0.98** |\n\n**Interpretation:** Cp=1.07 indicates adequate inherent capability, but **Cpk=0.98 (< 1.33) signals centering issues**—the process mean is shifted toward the lower spec limit. Target Cpk ≥ 1.33 for manufacturing; this process needs adjustment.",
+   "rag_ok": true,
+   "baseline_ok": true,
+   "expected_cpk": 0.98
+  },
+  {
+   "id": "t02",
+   "type": "tool",
+   "rag_answer": "For your measurements, **Cp = 2.601** and **Cpk = 2.378**. These values indicate excellent process capability—well above the minimum threshold of 1.0 [c0011]. Both indices use the formulas: Cp = (USL − LSL)/(6s) and Cpk = min[(USL − x̄)/(3s), (x̄ − LSL)/(3s)] [c0011]. Note: your sample size (n=7) is well below the recommended ~50 observations for valid capability estimates [c0011]. Consider collecting more data for more reliable estimates.",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm"
+   ],
+   "baseline_answer": "# Process Capability Analysis\n\n**Data:** n=7, measurements: 50.2, 49.9, 50.5, 50.1, 50.3, 49.8, 50.4\n\n**Calculations:**\n\n| Metric | Value |\n|--------|-------|\n| Mean (x̄) | 50.17 |\n| Std Dev (s) | 0.256 |\n| **Cp** | **2.60** |\n| **Cpk** | **2.38** |\n\n**Steps:**\n- Cp = (USL − LSL) / (6σ) = (52 − 48) / (6 × 0.256) = 4 / 1.536 = **2.60**\n- Cpu = (USL − x̄) / (3σ) = (52 − 50.17) / 0.768 = **2.38**\n- Cpl = (x̄ − LSL) / (3σ) = (50.17 − 48) / 0.768 = **2.82**\n- Cpk = min(2.38, 2.82) = **2.38**\n\n**Interpretation:** Both indices exceed 1.33, indicating excellent process capability. The process is well-centered (Cpu ≈ Cpl), with the lower side slightly constraining Cpk. Process is highly capable with minimal defect risk.",
+   "rag_ok": true,
+   "baseline_ok": false,
+   "expected_cpk": 2.378
+  },
+  {
+   "id": "t03",
+   "type": "tool",
+   "rag_answer": "Based on the tool computation: **Cp = 1.04** and **Cpk = 1.005** [c0011]. With n=5 measurements (mean=8.12, std_dev=0.1924), the process capability indices are calculated using formulas: Cp = (USL−LSL)/(6s) and Cpk = min[(USL−x̄)/(3s), (x̄−LSL)/(3s)] [c0011]. Cpk of 1.005 exceeds the minimum threshold of 1.0 [c0017], indicating marginal capability. However, the sample size of 5 is well below the recommended minimum of 25 for valid approximations, and ideally n≥100 for capability studies [c0016]. Results should be considered preliminary pending larger sample collection.",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm"
+   ],
+   "baseline_answer": "# Cp and Cpk Calculation\n\n**Data:** 8.0, 8.4, 7.9, 8.2, 8.1 | LSL = 7.5, USL = 8.7\n\n**Step 1: Calculate mean & standard deviation**\n- Mean (x̄) = 40.6 / 5 = **8.12**\n- Std Dev (s) = **0.192** (sample, n−1)\n\n**Step 2: Calculate Cp**\n$$C_p = \\frac{USL - LSL}{6\\sigma} = \\frac{8.7 - 7.5}{6 \\times 0.192} = \\frac{1.2}{1.152} = \\boxed{1.04}$$\n\n**Step 3: Calculate Cpk**\n$$C_{pu} = \\frac{8.7 - 8.12}{3 \\times 0.192} = 1.00$$\n$$C_{pl} = \\frac{8.12 - 7.5}{3 \\times 0.192} = 1.07$$\n$$C_{pk} = \\min(1.00, 1.07) = \\boxed{1.00}$$\n\n**Interpretation:** Cp=1.04 indicates adequate overall spread; Cpk=1.00 shows the process barely meets minimum capability. The lower index (Cpk) reveals the mean is slightly off-center toward the upper limit, limiting the true capability margin.",
+   "rag_ok": true,
+   "baseline_ok": false,
+   "expected_cpk": 1.005
+  },
+  {
+   "id": "t04",
+   "type": "tool",
+   "rag_answer": "For your measurements (mean = 100.5, s = 2.45):\n\n**Cp = 1.021** — measures overall process width relative to specification range. [c0011]\n\n**Cpk = 0.748** — accounts for process centering. Calculated as min[(USL−μ)/(3σ), (μ−LSL)/(3σ)] = min[1.292, 0.748]. [c0011]\n\nThe Cpk value of 0.748 is below the typical minimum of 1.0 [c0017], indicating the process is **not capable**. The limitation is the lower tail—your process is shifted toward the upper limit. To improve: reduce variability and/or recenter the process toward the specification midpoint (102.5). [c0017]",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm"
+   ],
+   "baseline_answer": "# Process Capability Analysis\n\n**Data Summary:**\n- Mean (x̄) = 100.5\n- Sample std dev (s) = 2.449\n- Spec width = 110 − 95 = 15\n\n**Cp (Overall capability):**\n$$C_p = \\frac{USL - LSL}{6\\sigma} = \\frac{15}{6(2.449)} = \\frac{15}{14.694} \\approx 1.021$$\n\n**Cpk (Actual capability):**\n$$C_{pk} = \\min\\left[\\frac{USL - \\bar{x}}{3\\sigma}, \\frac{\\bar{x} - LSL}{3\\sigma}\\right]$$\n$$= \\min\\left[\\frac{9.5}{7.347}, \\frac{5.5}{7.347}\\right] = \\min[1.293, 0.749] \\approx 0.749$$\n\n**Interpretation:** Cpk < 1.0 indicates the process is **not capable** of consistently meeting specs. The process mean is offset toward the lower limit, creating risk of exceeding LSL. Target: Cpk ≥ 1.33.",
+   "rag_ok": true,
+   "baseline_ok": true,
+   "expected_cpk": 0.748
+  },
+  {
+   "id": "t05",
+   "type": "tool",
+   "rag_answer": "**Results:** Cp = 0.891, Cpk = 0.802 (from tool calculation with n=6, mean=0.505, std_dev=0.0187).\n\n**Interpretation:** Both indices fall below the minimum acceptable threshold of 1.0 [c0017]. This indicates inadequate process capability. The process variation uses 89.1% of the specification width (Cp), but centering is poor: the mean is off-center, so Cpk is further reduced to 0.802 [c0011].\n\n**Important limitation:** Sample size (n=6) is well below the recommended 50 independent observations [c0011]. Capability index estimates are unreliable with such small samples. Collect ~50–100 more measurements before drawing firm conclusions [c0016].",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm"
+   ],
+   "baseline_answer": "# Process Capability Analysis\n\n**Data Summary:**\n- Measurements: 0.52, 0.49, 0.51, 0.50, 0.53, 0.48\n- Mean (x̄) = 0.505\n- Sample Std Dev (s) = 0.0187\n- Spec Range: 0.45–0.55\n\n**Cp = 0.89**\n- Formula: (USL − LSL) / 6σ = 0.10 / 0.112 = 0.89\n- Interpretation: Process spread uses ~89% of tolerance; inadequate (Cp < 1.33 is poor)\n\n**Cpk = 0.80**\n- Upper: (0.55 − 0.505) / 3σ = 0.80\n- Lower: (0.505 − 0.45) / 3σ = 0.98\n- Cpk = min(0.80, 0.98) = **0.80**\n- Interpretation: Process slightly off-center toward lower limit; high defect risk (Cpk < 1.33 is inadequate)\n\n**Conclusion:** Process is **not capable**. Center process closer to target (0.50) and/or reduce variation to achieve Cpk ≥ 1.33 for acceptable capability.",
+   "rag_ok": true,
+   "baseline_ok": false,
+   "expected_cpk": 0.802
+  }
+ ]
+}

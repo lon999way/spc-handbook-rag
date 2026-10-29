@@ -1,0 +1,409 @@
+{
+ "summary": {
+  "n": 30,
+  "hit_at_5": "24/25",
+  "gate_threshold": 0.58,
+  "gate_refuses_unanswerable": "3/5",
+  "gate_false_refusals": "0/25",
+  "cosine_range_answerable": [
+   0.625,
+   0.884
+  ],
+  "cosine_range_unanswerable": [
+   0.493,
+   0.611
+  ]
+ },
+ "rows": [
+  {
+   "id": "a01",
+   "type": "answerable",
+   "best_cosine": 0.625,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm"
+   ]
+  },
+  {
+   "id": "a02",
+   "type": "answerable",
+   "best_cosine": 0.815,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc324.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc324.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc324.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc324.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section6/pmc614.htm"
+   ]
+  },
+  {
+   "id": "a03",
+   "type": "answerable",
+   "best_cosine": 0.808,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc323.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc3231.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc323.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc323.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc323.htm"
+   ]
+  },
+  {
+   "id": "a04",
+   "type": "answerable",
+   "best_cosine": 0.833,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc322.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc322.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc322.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section6/pmc614.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc32.htm"
+   ]
+  },
+  {
+   "id": "a05",
+   "type": "answerable",
+   "best_cosine": 0.859,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc332.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc332.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc332.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc33.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc33.htm"
+   ]
+  },
+  {
+   "id": "a06",
+   "type": "answerable",
+   "best_cosine": 0.808,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc33.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc331.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc331.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc331.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc331.htm"
+   ]
+  },
+  {
+   "id": "a07",
+   "type": "answerable",
+   "best_cosine": 0.766,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc231.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc22.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc231.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc21.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc21.htm"
+   ]
+  },
+  {
+   "id": "a08",
+   "type": "answerable",
+   "best_cosine": 0.858,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc24.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc24.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc24.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc24.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc24.htm"
+   ]
+  },
+  {
+   "id": "a09",
+   "type": "answerable",
+   "best_cosine": 0.86,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc27.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc27.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc22.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc2.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc25.htm"
+   ]
+  },
+  {
+   "id": "a10",
+   "type": "answerable",
+   "best_cosine": 0.858,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section5/pmc543.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc341.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc34.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section5/pmc543.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc34.htm"
+   ]
+  },
+  {
+   "id": "a11",
+   "type": "answerable",
+   "best_cosine": 0.76,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc14.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc32.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/pmc.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc13.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc15.htm"
+   ]
+  },
+  {
+   "id": "a12",
+   "type": "answerable",
+   "best_cosine": 0.791,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc15.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section1/pri12.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section1/pri12.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc1.htm"
+   ]
+  },
+  {
+   "id": "a13",
+   "type": "answerable",
+   "best_cosine": 0.826,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3345.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri334.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3381.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section5/pri58.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3381.htm"
+   ]
+  },
+  {
+   "id": "a14",
+   "type": "answerable",
+   "best_cosine": 0.884,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3343.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3343.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3343.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3343.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section5/pri594.htm"
+   ]
+  },
+  {
+   "id": "a15",
+   "type": "answerable",
+   "best_cosine": 0.873,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3345.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3381.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3344.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section5/pri58.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3344.htm"
+   ]
+  },
+  {
+   "id": "a16",
+   "type": "answerable",
+   "best_cosine": 0.791,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri335.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3346.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri335.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri335.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri335.htm"
+   ]
+  },
+  {
+   "id": "a17",
+   "type": "answerable",
+   "best_cosine": 0.805,
+   "hit": false,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3361.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri339.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri336.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri32.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3361.htm"
+   ]
+  },
+  {
+   "id": "a18",
+   "type": "answerable",
+   "best_cosine": 0.775,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3361.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3361.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3361.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3361.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri336.htm"
+   ]
+  },
+  {
+   "id": "a19",
+   "type": "answerable",
+   "best_cosine": 0.752,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section1/pri13.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section4/pri47.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section4/pri41.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section5/pri54.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section6/pri61b.htm"
+   ]
+  },
+  {
+   "id": "a20",
+   "type": "answerable",
+   "best_cosine": 0.803,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3363.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3362.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3363.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri336.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3363.htm"
+   ]
+  },
+  {
+   "id": "u01",
+   "type": "unanswerable",
+   "best_cosine": 0.571,
+   "hit": false,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc436.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section5/pri57.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc323.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section4/pri453.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri335.htm"
+   ]
+  },
+  {
+   "id": "u02",
+   "type": "unanswerable",
+   "best_cosine": 0.493,
+   "hit": false,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section4/pri453.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section4/pri453.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section5/pri56.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section6/pri6.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section6/pri611.htm"
+   ]
+  },
+  {
+   "id": "u03",
+   "type": "unanswerable",
+   "best_cosine": 0.597,
+   "hit": false,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri32.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section5/pri55.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section6/pri627.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section6/negiz4/negiz4.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section5/pri5313.htm"
+   ]
+  },
+  {
+   "id": "u04",
+   "type": "unanswerable",
+   "best_cosine": 0.554,
+   "hit": false,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section6/pmc611.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section5/pri55.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc332.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc331.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc331.htm"
+   ]
+  },
+  {
+   "id": "u05",
+   "type": "unanswerable",
+   "best_cosine": 0.611,
+   "hit": false,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section5/pri59a7.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section5/pri599a.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section5/pri59a7.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section5/pri56.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section5/pri55.htm"
+   ]
+  },
+  {
+   "id": "t01",
+   "type": "tool",
+   "best_cosine": 0.755,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm"
+   ]
+  },
+  {
+   "id": "t02",
+   "type": "tool",
+   "best_cosine": 0.758,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm"
+   ]
+  },
+  {
+   "id": "t03",
+   "type": "tool",
+   "best_cosine": 0.761,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm"
+   ]
+  },
+  {
+   "id": "t04",
+   "type": "tool",
+   "best_cosine": 0.746,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm"
+   ]
+  },
+  {
+   "id": "t05",
+   "type": "tool",
+   "best_cosine": 0.767,
+   "hit": true,
+   "top_urls": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm"
+   ]
+  }
+ ]
+}

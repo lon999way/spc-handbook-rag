@@ -1,0 +1,425 @@
+{
+ "summary": {
+  "answerable": {
+   "rag": "18/20",
+   "baseline": "15/20",
+   "rag_citation_correct": "19/20",
+   "baseline_citation_correct": "0/20 (baseline has no sources)"
+  },
+  "unanswerable": {
+   "rag": "5/5",
+   "baseline": "5/5"
+  },
+  "tool": {
+   "rag": "4/5",
+   "baseline": "2/5"
+  }
+ },
+ "rows": [
+  {
+   "id": "a01",
+   "type": "answerable",
+   "rag_answer": "**Cp** measures process capability based solely on specification width relative to variation: Cp = (USL − LSL)/(6σ). **Cpk** adjusts for centering and is the minimum of upper and lower one-sided indices: Cpk = min[(USL − μ)/(3σ), (μ − LSL)/(3σ)]. The relationship is Cpk = Cp(1 − k), where k represents how far the process mean is from the specification midpoint. Since 0 ≤ k ≤ 1, always Cpk ≤ Cp. A process can have high Cp but low Cpk if poorly centered. For example (c0017): with Cp = 1.0 but mean offset from target, Cpk = 0.667, indicating inadequate capability despite wide specification range.",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm"
+   ],
+   "baseline_answer": "**Cp** measures *potential* process capability assuming the process is centered at the specification midpoint. Formula: Cp = (USL − LSL) / 6σ\n\n**Cpk** measures *actual* capability accounting for where the process mean really is. Formula: Cpk = min[(USL − μ)/(3σ), (μ − LSL)/(3σ)]\n\n**Key difference:** Cp ignores centering; Cpk does not. If your process drifts off-center, Cp stays high while Cpk drops—revealing the true story.\n\n**Rule of thumb:** Cpk ≤ Cp always. They're equal only when centered perfectly.\n\n**Interpretation:** Cpk = 1.33 is commonly required (allows ~0.3% defects). Use Cpk for real decisions since it reflects actual performance, not wishful centering.",
+   "rag_ok": true,
+   "baseline_ok": true,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "a02",
+   "type": "answerable",
+   "rag_answer": "EWMA control charts are preferred over Shewhart charts when you need to detect small or gradual drift in the process. Unlike Shewhart charts, which depend only on the most recent measurement and react only when a point falls outside control limits, EWMA uses an exponentially weighted average of all prior data. This makes EWMA sensitive to subtle process changes that Shewhart charts might miss. The choice of weighting factor (λ, typically 0.2–0.3) allows adjustment of sensitivity.",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc324.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc324.htm"
+   ],
+   "baseline_answer": "An EWMA control chart is preferred over a Shewhart chart when:\n\n1. **Detecting small shifts**: EWMA is more sensitive to small, persistent shifts in process mean (1–2 sigma), whereas Shewhart charts miss these gradual drifts.\n\n2. **Autocorrelated data**: When successive observations are correlated (common in automated/chemical processes), EWMA performs better because it accounts for this dependency.\n\n3. **Individual measurements**: With n=1 data (instead of rational subgroups), EWMA accumulates information through exponential weighting, enabling faster shift detection than Shewhart individuals charts.\n\n4. **Rapid response to sustained changes**: EWMA's \"memory\" (via weight λ, typically 0.1–0.3) means current and historical data both influence each plotted point, reducing time-to-signal.\n\n**Tradeoff**: EWMA is more complex to understand and implement. Use Shewhart when large sudden shifts are the primary concern or for simplicity.",
+   "rag_ok": true,
+   "baseline_ok": true,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "a03",
+   "type": "answerable",
+   "rag_answer": "CUSUM stands for Cumulative Sum. A cumulative sum control chart is formed by plotting cumulative sums of deviations of sample means from a target value against the sample number. CUSUM is more efficient than Shewhart charts for detecting small shifts in process mean (≤2 sigma).",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc323.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc3231.htm"
+   ],
+   "baseline_answer": "CUSUM stands for **Cumulative Sum** (or Cumulative Sum Control Chart).\n\nIt's a control chart used in statistical process control to detect small shifts in a process mean. Unlike traditional Shewhart charts that plot individual observations, CUSUM plots the cumulative sum of deviations from a target value. This makes it more sensitive to gradual process drift.\n\nKey features:\n- **Sensitive** to small shifts (typically 0.5–2σ)\n- **Cumulative** approach gives it memory of past observations\n- **V-mask** or decision interval methods determine out-of-control signals\n- Commonly used in manufacturing and quality control\n\nCUSUM is particularly effective when you need early detection of process changes that might be missed by standard control charts.",
+   "rag_ok": true,
+   "baseline_ok": true,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "a04",
+   "type": "answerable",
+   "rag_answer": "Individuals control limits are estimated using the average of all individual measurements (x̄) and the average moving range (M̄R), calculated as: UCL = x̄ + 3(M̄R)/1.128 and LCL = x̄ − 3(M̄R)/1.128, where M̄R is the average of absolute differences between consecutive observations. Alternatively, limits can use standard deviation: x̄ ± 3s/c₄. Both averages may be replaced by standards or targets if available.",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc322.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc322.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc322.htm"
+   ],
+   "baseline_answer": "Control limits for an individuals (I) chart are typically estimated using the **moving range (MR)** method:\n\n1. **Calculate moving ranges**: Compute successive differences between consecutive observations: MR_i = |X_i - X_(i-1)|\n\n2. **Average the moving ranges**: MR̄ = average of all moving ranges\n\n3. **Estimate process standard deviation**: σ̂ = MR̄ / d₂, where **d₂ = 1.128** (constant for moving range of n=2)\n\n4. **Set control limits**: \n   - **UCL = X̄ + 2.66(MR̄)**\n   - **LCL = X̄ - 2.66(MR̄)**\n   \n   (The 2.66 factor = 3/d₂)\n\nThe moving range method is preferred because it doesn't require rational subgroups and uses consecutive observations to capture process variation. If historical data or known process parameters exist, those standard deviations can be used directly instead.",
+   "rag_ok": true,
+   "baseline_ok": true,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "a05",
+   "type": "answerable",
+   "rag_answer": "Use a **p-chart** (proportion chart) for the proportion of nonconforming units in a sample. The p-chart is specifically designed for attributes control data and monitors the fraction (proportion) of defective or nonconforming product. When the true fraction nonconforming *p* is known, the control limits are calculated as: UCL = *p* + 3√[*p*(1-*p*)/*n*], Center Line = *p*, and LCL = *p* - 3√[*p*(1-*p*)/*n*]. When *p* is unknown, it is estimated from preliminary samples.",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc33.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc332.htm"
+   ],
+   "baseline_answer": "# p-Chart (Proportion Control Chart)\n\nYou use a **p-chart** to monitor the proportion (or fraction) of nonconforming units in a sample.\n\n**Key characteristics:**\n- Tracks the proportion **p** = (number of nonconforming units) / (sample size)\n- Used when sample size is **constant**\n- Assumes binomial distribution\n- Control limits: p̄ ± 3√[p̄(1−p̄)/n]\n  - where p̄ = average proportion across samples\n  - n = sample size\n\n**When to use:** Quality inspection of binary outcomes (pass/fail, defective/acceptable).\n\n**Related:** If your sample size **varies**, use a **u-chart** instead. If you prefer counting actual nonconforming units rather than proportions, use an **np-chart** (requires constant sample size).",
+   "rag_ok": false,
+   "baseline_ok": false,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "a06",
+   "type": "answerable",
+   "rag_answer": "The **u chart** (for unit) is used for the count of defects per unit. It handles defects per unit and applies when working with the average number of nonconformities per unit of product. This differs from the c chart, which counts total defects, and the p chart, which measures the proportion of defective items.",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc33.htm"
+   ],
+   "baseline_answer": "The **c chart** (c-control chart) is used for the count of defects per unit when the unit size is constant.\n\n**Key characteristics:**\n- Plots the number of defects (c) found in each fixed-size unit\n- Assumes defects follow a Poisson distribution\n- Control limits: c̄ ± 3√c̄ (where c̄ is the average defect count)\n\n**When unit size varies**, use the **u chart** instead:\n- Plots defects per unit (u = c/n)\n- Standardizes for varying inspection areas or sample sizes\n- Control limits: ū ± 3√(ū/n)\n\n**Example**: Inspecting 10 identical circuit boards, counting defects on each board → c chart. Inspecting varying lengths of fabric for flaws → u chart.",
+   "rag_ok": false,
+   "baseline_ok": true,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "a07",
+   "type": "answerable",
+   "rag_answer": "AQL stands for **Acceptable Quality Level**. It is a percent defective that serves as the baseline requirement for the quality of the producer's product. The producer designs a sampling plan to achieve a high probability of accepting lots that have a defect level less than or equal to the AQL. Both the producer and consumer must have perfect agreement on what the AQL is for a given product characteristic.",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc22.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc231.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc231.htm"
+   ],
+   "baseline_answer": "AQL stands for **Acceptable Quality Level**.\n\nIn acceptance sampling, it's the maximum defect percentage (or number of defects per 100 units) that the consumer considers acceptable. Lots with defect rates at or below the AQL have a high probability of acceptance. It represents the quality level the supplier should maintain. For example, an AQL of 1% means the consumer will likely accept lots with 1% or fewer defects, but reject those with higher defect rates.",
+   "rag_ok": true,
+   "baseline_ok": true,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "a08",
+   "type": "answerable",
+   "rag_answer": "A double sampling plan works as follows [c0044]: A first sample of size n₁ is taken from a lot. If the number of defectives d₁ ≤ a₁ (acceptance number), the lot is accepted. If d₁ ≥ r₁ (rejection number), the lot is rejected. If a₁ < d₁ < r₁, a second sample of size n₂ is taken [c0045]. The total defectives D₂ = d₁ + d₂ are compared to a₂ and r₂. If D₂ ≤ a₂, the lot is accepted; if D₂ ≥ r₂, it is rejected. This plan gives a questionable lot a second chance before making a final decision [c0044].",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc24.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc24.htm"
+   ],
+   "baseline_answer": "A **double sampling plan** is an acceptance sampling procedure with two decision stages:\n\n## First Sample (size n₁)\n- Count defects found\n- **Accept lot** if defects ≤ a₁ (acceptance number)\n- **Reject lot** if defects ≥ r₁ (rejection number)  \n- **Inconclusive** if a₁ < defects < r₁ → proceed to second sample\n\n## Second Sample (size n₂)\n- Count defects in second sample\n- **Accept lot** if total defects (both samples) ≤ a₂\n- **Reject lot** if total defects ≥ r₂\n\n## Key Advantage\nReduces average inspection cost vs. single sampling—if the first sample gives a clear decision (high or low defects), you stop. Only marginal cases require the second sample.\n\n## Trade-off\nMore operationally complex than single sampling, but comparable protection levels (producer/consumer risk).\n\n**Example:** Plan (125, 2, 8, 200, 6, 9) means: sample 125 units first; if ≤2 defects accept; if ≥8 reject; otherwise sample 200 more; if cumulative ≤6 accept, else reject.",
+   "rag_ok": true,
+   "baseline_ok": true,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "a09",
+   "type": "answerable",
+   "rag_answer": "Skip lot sampling is a cost-saving inspection method where only a fraction of submitted lots are inspected rather than all lots [c0056]. It should only be used when product quality is demonstrated to be very good [c0056]. Implementation begins with normal lot-by-lot inspection using a reference plan. When i consecutive lots are accepted, inspection switches to randomly selecting and inspecting only a fraction f of subsequent lots [c0056]. If any lot is rejected, normal inspection resumes [c0056]. The parameters f and i control the probability of acceptance: smaller f or smaller i increases acceptance probability [c0057]. Skip lot sampling is preferred when supplier quality is excellent with proven track record [c0057].",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc27.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section2/pmc27.htm"
+   ],
+   "baseline_answer": "# Skip Lot Sampling\n\nSkip lot sampling is an inspection procedure where, after a supplier or process demonstrates consistent quality, inspectors skip inspecting some product lots and inspect only periodically (e.g., every 5th lot).\n\n**Basic operation:**\n- **Normal inspection**: Inspect all lots initially\n- **Skip mode**: Once criteria are met (e.g., multiple consecutive accepted lots), skip most lots; inspect only 1 in *k* lots\n- **Return to normal**: When a failure occurs, revert to inspecting all lots\n\n**Key benefits:**\n- Reduces inspection costs significantly\n- Maintains quality assurance\n- Rewards suppliers with proven quality\n\n**Standard**: ANSI/ASQ Z1.4 (formerly AQL sampling) defines skip lot procedures with rules for switching between normal and skipped modes.\n\nIt's a **bilateral agreement**—requires documented supplier quality history and defined switching criteria to ensure risk remains acceptable.",
+   "rag_ok": true,
+   "baseline_ok": false,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "a10",
+   "type": "answerable",
+   "rag_answer": "A Hotelling T-squared control chart is used for monitoring and controlling multivariate processes—situations where multiple variables must be tracked simultaneously. It combines information from both the mean and dispersion (variability) of several variables into a single scalar statistic [c0113]. The T² statistic accounts for the covariance structure among variables [c0116], making it the multivariate counterpart to univariate control charts like X̄ and S charts [c0114]. When data are grouped, a T² chart can be paired with a T_d² (dispersion) chart to form a complete multivariate control system [c0114].",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc34.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc341.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc34.htm"
+   ],
+   "baseline_answer": "A **Hotelling T² control chart** monitors multiple correlated quality characteristics simultaneously in statistical process control. \n\n**Key uses:**\n\n1. **Multivariate monitoring** — Tracks two or more related process variables jointly, not individually\n2. **Detects mean shifts** — Identifies changes in the overall process mean across multiple dimensions\n3. **Accounts for correlation** — Incorporates relationships between variables, unlike separate univariate charts\n4. **Reduces false alarms** — Avoids inflated Type I error when using multiple independent charts\n\n**When to use it:**\n- Multiple quality characteristics that are correlated\n- Need joint control rather than individual variable surveillance\n- Shifts affecting the multivariate mean that univariate charts might miss\n\nThe T² statistic follows Hotelling's distribution (multivariate generalization of Student's t), with upper control limits typically set around the 95th percentile for Phase II monitoring.",
+   "rag_ok": true,
+   "baseline_ok": true,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "a11",
+   "type": "answerable",
+   "rag_answer": "When a process goes out of control, the person responsible should follow these steps: (1) Look for an assignable cause by consulting the out-of-control action plan (OCAP) associated with the control chart [c0008]. (2) Use the OCAP, which provides a specific flowchart, to guide corrective actions [c0007]. (3) Make changes to bring the process back into control. These changes can be manual (based on engineering judgment) or automated through advanced process control loops that adjust for the magnitude of deviation [c0007].",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc14.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc13.htm"
+   ],
+   "baseline_answer": "When a process goes out of control in statistical process control (SPC), follow this sequence:\n\n1. **Stop production** — Halt the process immediately to prevent defects.\n\n2. **Investigate root causes** — Identify special/assignable causes of variation (equipment failure, material change, operator error, environmental factors).\n\n3. **Implement corrective action** — Address the identified cause directly, not just symptoms.\n\n4. **Verify the fix** — Resume operation and confirm the process returns to statistical control using control charts.\n\n5. **Document findings** — Record what went wrong and what was done.\n\n6. **Prevent recurrence** — Implement preventive measures (maintenance, training, procedure changes).\n\nThe key principle: distinguish **special causes** (assignable, fixable) from **common causes** (inherent, require system change). Only investigate when out-of-control signals appear; don't adjust a stable process.",
+   "rag_ok": true,
+   "baseline_ok": true,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "a12",
+   "type": "answerable",
+   "rag_answer": "If a process is statistically in control but has unacceptable output (average too high/low or excessive variability), you can initiate process improvement techniques including: experiments, calibration, and re-analysis of historical databases. These approaches aim to center the process on target or reduce its variability. However, the process must first be stable before you can effectively center it or reduce its overall variation.",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc15.htm"
+   ],
+   "baseline_answer": "When a process is **in statistical control but produces unacceptable output**, the variation is due to common causes only—not special causes. Your options:\n\n1. **Redesign the process** – Fundamentally change the method, equipment, materials, or parameters to reduce inherent variation or shift the output center.\n\n2. **Reduce common cause variation** – Improve worker training, standardize procedures, upgrade equipment, or optimize process conditions.\n\n3. **Increase process capability** – Conduct process improvement (Six Sigma, lean) to tighten the distribution and meet specifications.\n\n4. **Adjust specifications** – Negotiate with customers if requirements are unrealistic (rare in practice).\n\nThis illustrates a key SPC principle: **statistical control ≠ acceptable output**. A stable process may still be incapable. You must pursue *process capability*—ensuring both control *and* specifications are met—typically requiring management commitment and fundamental redesign, not just troubleshooting.",
+   "rag_ok": true,
+   "baseline_ok": false,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "a13",
+   "type": "answerable",
+   "rag_answer": "A fractional factorial design uses only a fraction (½, ¼, etc.) of the runs required by a full factorial, reducing experimental cost while maintaining balance and orthogonality [c0457]. It's used to economically investigate cause-and-effect relationships [c0483]. Low-resolution designs (III–IV) screen main effects from many variables [c0483], while higher-resolution designs (V+) investigate interaction effects and allow quadratic model estimation [c0483]. For example, a 2^(5-2) design requires 8 runs instead of 32, achieving a quarter-fraction [c0533].",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri334.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3345.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3381.htm"
+   ],
+   "baseline_answer": "A **fractional factorial design** runs only a fraction of all possible treatment combinations instead of the complete full factorial. For example, 2^(k-p) instead of 2^k combinations, running 1/2^p of the full design.\n\n## Why use one?\n\n1. **Cost & time efficiency** — Dramatically fewer experimental runs reduce budget and timeline\n2. **Resource constraints** — Makes large screening experiments feasible when full factorials are impractical\n3. **Factor screening** — Identifies which factors significantly affect the response before committing to full investigation\n4. **Early-stage experiments** — Efficient when many factors need testing but you expect only a few to matter\n\n## Trade-off\n\nSome factor interactions become **confounded** (aliased) with other effects — you cannot estimate all two-way interactions independently. This is acceptable if you're willing to assume higher-order interactions are negligible or if you only need main effects initially.\n\n**Common use:** Resolution III or IV designs balance efficiency with interpretability for screening experiments.",
+   "rag_ok": true,
+   "baseline_ok": true,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "a14",
+   "type": "answerable",
+   "rag_answer": "Confounding (aliasing) in a fractional factorial design means losing the ability to separately estimate some effects and/or interactions. For example, in a 2³⁻¹ design, the main effect of factor X₃ becomes inseparable from the interaction effect X₁*X₂—their estimates are blended together [c0468]. The practical consequence is uncertainty about whether an estimated effect comes from the main factor itself or from confounding interactions [c0805]. This occurs because fractional designs use fewer runs than full factorials (n < 2ᵏ), making it a fundamental trade-off. Better designs minimize this by pushing main effect confounding toward higher-order interactions [c0805]. The sparsity of effects assumption helps: if confoundings involve only non-significant interactions, the bias remains acceptable [c0468].",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3343.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3343.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section5/pri594.htm"
+   ],
+   "baseline_answer": "# Confounding (Aliasing) in Fractional Factorial Designs\n\n**Confounding** occurs when two or more effects cannot be distinguished from each other because they are perfectly correlated in the design. Since a fractional factorial runs only a subset of all possible treatment combinations, some effects become **aliased**—their estimates cannot be separated.\n\n## Key aspects:\n\n1. **Cause**: Running 1/2, 1/4, or smaller fraction of the full factorial means fewer observations than parameters to estimate.\n\n2. **Alias structure**: Determined by the design generator(s). For example, in a 2^(5-1) design, if you confound factor E with the ABC interaction, then the estimated effect of E is actually E + ABC.\n\n3. **Trade-off**: You gain experimental efficiency (fewer runs) but lose ability to distinguish confounded effects.\n\n4. **Design quality**: Good fractional designs minimize confounding of **main effects with each other** and lower-order interactions, assuming higher-order interactions are negligible.\n\nThe alias structure must be examined before running the experiment to ensure you can still answer your key questions.",
+   "rag_ok": true,
+   "baseline_ok": true,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "a15",
+   "type": "answerable",
+   "rag_answer": "The resolution of a fractional factorial design tells you the degree to which estimated main effects are aliased (confounded) with interactions of various levels. Specifically, it indicates how badly the design is confounded. Resolution III designs confound main effects with two-factor interactions; Resolution IV designs avoid aliasing main effects with two-factor interactions but alias two-factor interactions with each other; Resolution V designs avoid aliasing main effects or two-factor interactions with each other, though two-factor interactions are aliased with three-factor interactions.",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3344.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3344.htm"
+   ],
+   "baseline_answer": "The **resolution of a fractional factorial design** describes the **degree of confounding** (aliasing) between effects in your design. It uses Roman numerals:\n\n- **Resolution III**: Main effects are unconfounded with each other, but confounded with two-factor interactions\n- **Resolution IV**: Main effects clear; two-factor interactions clear but confounded with each other\n- **Resolution V**: Main effects, two-factor interactions, and three-factor interactions all unconfounded\n\nResolution tells you:\n1. **Which effects are estimable** without bias from other effects\n2. **How much information you sacrifice** by running a fraction instead of a full factorial\n3. **Whether your design meets your research needs** (e.g., if you need clear two-factor interactions, Resolution IV minimum)\n\nHigher resolution = clearer effects but more experimental runs. It's the key trade-off between **efficiency** and **clarity**.",
+   "rag_ok": true,
+   "baseline_ok": true,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "a16",
+   "type": "answerable",
+   "rag_answer": "Plackett-Burman designs are screening designs used to economically detect and determine the relative significance of main effects in experiments with many factors. They are particularly efficient when only main effects are of interest and are very useful for detecting large main effects, assuming interactions are negligible compared with the few important main effects. These designs are economical experimental plans featuring run numbers that are multiples of 4, allowing experiments with many factors (e.g., up to 11 factors in a 12-run design) while maintaining efficiency.",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri335.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3346.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri335.htm"
+   ],
+   "baseline_answer": "Plackett-Burman designs are **screening designs** used to identify which factors among many have significant effects on a response variable with minimal experimental runs.\n\n**Key uses:**\n\n- **Factor screening**: When you have many potential factors (variables) but suspect only a few are truly important\n- **Efficient exploration**: Require relatively few runs compared to full factorial designs (run sizes are multiples of 4)\n- **Estimation of main effects**: Focus on first-order (linear) effects rather than interactions\n- **Resource-constrained experiments**: Ideal when budget or time is limited\n\n**Characteristics:**\n- Fractional factorial design structure\n- Not fully orthogonal (some confounding between effects)\n- Suitable for initial investigations before conducting deeper studies\n- Can suggest which factors warrant more detailed follow-up experimentation\n\nThey're commonly used in industrial applications, product development, and process optimization when the goal is rapid identification of important factors rather than precise effect estimation.",
+   "rag_ok": true,
+   "baseline_ok": true,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "a17",
+   "type": "answerable",
+   "rag_answer": "Center points are added to two-level factorial designs to **detect quadratic effects and curvature** in the response surface. While a two-level design with center points cannot estimate individual pure quadratic effects, it effectively detects their presence [c0500]. This approach is recommended because it provides a cost-effective and simple way to establish whether curvature exists, helping determine if more complex response surface designs are needed [c0547]. Center points are located at the middle of the design space and enable the experiment to identify non-linear behavior without requiring the large number of runs that three-level designs would demand [c0404, c0500].",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri32.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri336.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri339.htm"
+   ],
+   "baseline_answer": "Center points in a two-level factorial design serve several key purposes:\n\n1. **Detect curvature**: They reveal nonlinear (quadratic) effects. If the response at the center differs significantly from the average of factorial points, curvature exists in the response surface.\n\n2. **Estimate pure error**: Replicate center points provide an independent estimate of experimental error, separate from model error, strengthening hypothesis tests.\n\n3. **Check assumptions**: They help verify that the linear model is adequate or if higher-order terms are needed.\n\n4. **Sequential design**: Center points bridge to response surface methodology (RSM). If curvature is detected, you can add axial points to build a central composite design without repeating factorial runs.\n\n5. **Robustness**: They improve variance estimation across the experimental region.\n\nTypically, 3–5 center point replicates are added to a 2^k design at low computational cost.",
+   "rag_ok": true,
+   "baseline_ok": true,
+   "rag_citation_ok": false
+  },
+  {
+   "id": "a18",
+   "type": "answerable",
+   "rag_answer": "A central composite design (CCD) consists of three main components: (1) an imbedded factorial or fractional factorial design with center points, and (2) a group of 'star points' that allow estimation of curvature. A CCD with k factors always contains 2k star points, representing new extreme values (low and high) for each factor. The distance from the center of the design space to star points is |α| > 1, where α depends on design properties and the number of factors.",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3361.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3361.htm"
+   ],
+   "baseline_answer": "A central composite design (CCD) consists of three components:\n\n1. **Factorial portion**: A two-level factorial (or fractional factorial) design at the corners of the experimental region—provides main effects and two-way interactions.\n\n2. **Center points**: Replicated observations at the center of the design space—helps estimate pure error and enables testing of curvature.\n\n3. **Axial (star) points**: Points along each factor axis at distance *α* from the center—allows fitting quadratic (second-order) terms.\n\nTogether, these create a roughly spherical design that efficiently estimates a second-order response surface model with relatively few runs. The axial distance *α* can be adjusted to make the design rotatable (uniform prediction variance) or face-centered (*α* = 1).\n\nCCDs are popular for response surface methodology because they balance efficiency with modeling flexibility.",
+   "rag_ok": true,
+   "baseline_ok": false,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "a19",
+   "type": "answerable",
+   "rag_answer": "The seven key steps for conducting a designed experiment are: (1) Set objectives, (2) Select process variables, (3) Select an experimental design, (4) Execute the design, (5) Check that the data are consistent with the experimental assumptions, (6) Analyze and interpret the results, (7) Use/present the results (which may lead to further runs or additional DOEs). Important practical considerations include checking measurement devices, keeping the experiment simple, verifying feasibility, monitoring for process drifts, avoiding unplanned changes, obtaining stakeholder buy-in, maintaining ownership of each step, and preserving all raw data with complete records.",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section1/pri13.htm"
+   ],
+   "baseline_answer": "The main steps of a designed experiment are:\n\n1. **Define Objectives** – Clarify what problem you're solving and what you want to learn.\n\n2. **Identify Factors & Responses** – Determine input variables (factors) to test and output measurements (responses) to track.\n\n3. **Select Design** – Choose an appropriate experimental structure (e.g., factorial, fractional factorial, response surface methodology) based on your objectives and constraints.\n\n4. **Plan & Execute** – Run trials according to the design plan in randomized order to minimize bias.\n\n5. **Analyze Results** – Use statistical methods to estimate factor effects, interactions, and significance.\n\n6. **Interpret & Conclude** – Determine which factors matter and their practical implications.\n\n7. **Verify** – Conduct confirmation runs to validate conclusions.\n\n8. **Implement** – Apply findings to improve the process.\n\nThis structured approach ensures efficient, statistically valid conclusions with fewer runs than trial-and-error testing.",
+   "rag_ok": true,
+   "baseline_ok": true,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "a20",
+   "type": "answerable",
+   "rag_answer": "Box-Behnken designs have two key advantages over central composite designs: (1) For three factors, they require fewer experimental runs, which can reduce cost and time [c0512, c0515]. (2) Their \"missing corners\" property is useful when experimenters must avoid combined factor extremes, preventing potential data loss in those cases [c0517]. However, this efficiency advantage disappears for 4 or more factors [c0512].",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3363.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3363.htm",
+    "https://www.itl.nist.gov/div898/handbook/pri/section3/pri3363.htm"
+   ],
+   "baseline_answer": "The primary advantage of Box-Behnken (BBD) designs over central composite designs (CCD) is that **all experimental points remain within the original experimental region**.\n\nBox-Behnken designs use only factor levels at ±1 and 0 (low, center, high), ensuring all runs stay within the hypercube defined by your initial factor ranges. In contrast, CCDs include axial (star) points at distance α from the center, which extend *outside* the experimental region when α > 1.\n\nThis matters practically because:\n- **Safety/feasibility**: Extreme settings (like very high temperatures) may be infeasible or unsafe\n- **Cost efficiency**: BBD typically requires fewer runs\n- **Robustness**: You avoid extrapolating beyond your intended operating range\n\nBBD is ideal when you need a second-order model (quadratic terms) within a defined region without venturing into untested extremes.",
+   "rag_ok": true,
+   "baseline_ok": false,
+   "rag_citation_ok": true
+  },
+  {
+   "id": "u01",
+   "type": "unanswerable",
+   "rag_answer": "The handbook passages I can search do not cover this, so I won't guess.",
+   "rag_refused": true,
+   "rag_citations": [],
+   "baseline_answer": "I cannot answer this question. Micron's specific DRAM yield data for Q3 2026 is not information I have access to. This would require access to:\n\n1. Micron's quarterly earnings reports or investor presentations\n2. Current semiconductor industry databases\n3. Real-time financial disclosures\n\nTo find this information, I'd recommend:\n- Checking Micron's investor relations website for Q3 2026 earnings reports\n- Reviewing SEC filings (10-Q or 10-K forms)\n- Consulting semiconductor industry research reports\n\nIf you have access to these documents, I'd be happy to help interpret yield-related data or discuss yield metrics in general.",
+   "rag_ok": true,
+   "baseline_ok": true
+  },
+  {
+   "id": "u02",
+   "type": "unanswerable",
+   "rag_answer": "The handbook passages I can search do not cover this, so I won't guess.",
+   "rag_refused": true,
+   "rag_citations": [],
+   "baseline_answer": "I cannot reliably answer this question. My knowledge was last updated in April 2024, and you're asking about a current business position as of October 2026. Executive leadership can change, and I don't have access to current information to verify who holds the role today.\n\nTo get accurate, current information about Micron Technology's CEO, I'd recommend checking:\n- Micron's official investor relations website\n- Recent press releases or SEC filings (10-K forms)\n- Current business news sources\n\nI apologize I can't provide the specific answer you're looking for.",
+   "rag_ok": true,
+   "baseline_ok": true
+  },
+  {
+   "id": "u03",
+   "type": "unanswerable",
+   "rag_answer": "",
+   "rag_refused": true,
+   "rag_citations": [],
+   "baseline_answer": "I can't help with this question. My role is to answer questions specifically about **statistical process control** and **design of experiments**. \n\nYour question about Kubernetes autoscaling falls outside that scope. For Kubernetes configuration guidance, I'd recommend consulting Kubernetes official documentation, DevOps-focused resources, or AI assistants trained more broadly on infrastructure topics.\n\nIs there anything about SPC or DOE I can help you with instead?",
+   "rag_ok": true,
+   "baseline_ok": true
+  },
+  {
+   "id": "u04",
+   "type": "unanswerable",
+   "rag_answer": "The handbook passages I can search do not cover this, so I won't guess.",
+   "rag_refused": true,
+   "rag_citations": [],
+   "baseline_answer": "I cannot answer this question. My scope is limited to statistical process control and design of experiments topics. \n\nFor semiconductor wafer pricing information, you would need to consult:\n- Industry reports from semiconductor suppliers\n- Market research firms (e.g., IC Insights, SEMI reports)\n- Direct quotes from wafer manufacturers\n- Trade publications covering semiconductor equipment and materials\n\nThese sources would provide the current market data you're seeking.",
+   "rag_ok": true,
+   "baseline_ok": true
+  },
+  {
+   "id": "u05",
+   "type": "unanswerable",
+   "rag_answer": "I cannot answer this question based on the provided passages.",
+   "rag_refused": true,
+   "rag_citations": [],
+   "baseline_answer": "I cannot reliably answer this question. While I know Micron operates manufacturing facilities in Taichung and produces HBM, the specific burn-in temperature parameters used in their fab processes are:\n\n1. **Proprietary manufacturing details** not typically disclosed in public sources\n2. **Subject to variation** across process generations and product lines\n3. **Not verifiable** against authoritative sources in my training data\n\nFor accurate information, you'd need to:\n- Contact Micron directly\n- Consult internal process specifications if you have access\n- Check technical datasheets or process qualifications documents\n\nIf this is for statistical process control or design of experiments work, I'd be happy to help with methodology instead.",
+   "rag_ok": true,
+   "baseline_ok": true
+  },
+  {
+   "id": "t01",
+   "type": "tool",
+   "rag_answer": "**Results:** Cp = 1.069, Cpk = 0.98, mean = 10.05, std_dev = 0.1871 (n=6).\n\nCp indicates process spread relative to specifications. Cpk = 0.98 is **marginally below the preferred minimum of 1.0** [c0017], indicating this process is on the borderline. Since Cpk < Cp, the process is off-center. **Caution:** With n=6, this is well below the recommended minimum of 50 independent values for valid capability estimates [c0011].",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm"
+   ],
+   "baseline_answer": "# Capability Analysis\n\n**Mean (X̄)** = 10.05\n**Sample Std Dev (s)** = 0.187\n\n**Cp = 1.07**\n- Formula: (USL − LSL) / 6σ = 1.2 / 1.123\n\n**Cpk = 0.98**\n- Formula: min[(USL − X̄) / 3σ, (X̄ − LSL) / 3σ] = min(1.16, 0.98)\n\n**Interpretation:** Process is marginally capable (Cp > 1.0), but **off-center toward the lower spec**—the lower half (0.98) is the limiting factor. Cpk < 1.33, so process centering should be improved. Consider adjusting the target to 10.1.",
+   "rag_ok": true,
+   "baseline_ok": true,
+   "expected_cpk": 0.98
+  },
+  {
+   "id": "t02",
+   "type": "tool",
+   "rag_answer": "The process_capability tool is not available in this session. I cannot calculate Cp and Cpk manually as per instructions. Please ensure the tool is loaded, or provide the capability indices if already computed.",
+   "rag_refused": true,
+   "rag_citations": [],
+   "baseline_answer": "# Process Capability Analysis\n\n**Calculations:**\n\n1. **Mean** = 351.2 ÷ 7 = 50.17\n2. **Standard deviation** (sample, n-1) = 0.256\n3. **Process width** = 52 - 48 = 4\n\n**Cp (Potential Capability):**\n- Cp = (USL − LSL) ÷ (6σ)\n- Cp = 4 ÷ (6 × 0.256) = **2.60**\n\n**Cpk (Actual Capability):**\n- Cpu = (52 − 50.17) ÷ (3 × 0.256) = 2.38\n- Cpl = (50.17 − 48) ÷ (3 × 0.256) = 2.82\n- Cpk = min(2.38, 2.82) = **2.38**\n\n**Interpretation:** Excellent capability (both >1.67). Process is well-centered; the process mean sits slightly above midspec (50.17 vs. 50), so upper capability (Cpu) is slightly tighter, but both indices indicate low defect risk.",
+   "rag_ok": false,
+   "baseline_ok": false,
+   "expected_cpk": 2.378
+  },
+  {
+   "id": "t03",
+   "type": "tool",
+   "rag_answer": "For measurements 8.0, 8.4, 7.9, 8.2, 8.1 with LSL 7.5 and USL 8.7: **Cp = 1.04** and **Cpk = 1.005**. The Cp indicates adequate specification width relative to process variation (6σ). The Cpk of 1.005 shows the process mean is well-centered; values ≥1.0 indicate acceptable capability. Process mean: 8.12; standard deviation: 0.1924 (n=5).",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm"
+   ],
+   "baseline_answer": "# Cp and Cpk Calculation\n\n**Data summary:**\n- Mean (x̄) = 8.12\n- Standard deviation (s) = 0.1924\n- Specification width = 8.7 − 7.5 = 1.2\n\n**Cp** (Process Capability):\n$$C_p = \\frac{USL - LSL}{6\\sigma} = \\frac{1.2}{6(0.1924)} = \\frac{1.2}{1.154} ≈ \\boxed{1.04}$$\n\n**Cpk** (Process Capability Index):\n$$C_{pk} = \\min\\left[\\frac{USL - \\bar{x}}{3\\sigma}, \\frac{\\bar{x} - LSL}{3\\sigma}\\right]$$\n\n- Upper: (8.7 − 8.12)/(3 × 0.1924) = 1.00\n- Lower: (8.12 − 7.5)/(3 × 0.1924) = 1.07\n\n$$C_{pk} ≈ \\boxed{1.00}$$\n\n**Interpretation:** Cp = 1.04 suggests adequate inherent capability; Cpk = 1.00 (limiting) indicates the process is slightly off-center toward the lower spec, reducing effective capability. Both indices exceed 1.0, so the process is **capable** but margins are tight. Centering near 8.1 would improve Cpk.",
+   "rag_ok": true,
+   "baseline_ok": false,
+   "expected_cpk": 1.005
+  },
+  {
+   "id": "t04",
+   "type": "tool",
+   "rag_answer": "For your data (n=8, mean=100.5, s=2.45), the capability indices are: **Cp=1.021** and **Cpk=0.748** [c0011]. Cp measures the specification width relative to 6σ [c0011]. Cpk adjusts for process centering using the formula Cpk=Cp(1−k), where k is the scaled distance from process mean to specification midpoint [c0012]. Your Cpk=0.748 falls below the preferred minimum of 1.0 [c0017], indicating inadequate process centering or excessive variation relative to specifications.",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm"
+   ],
+   "baseline_answer": "# Cp and Cpk Calculation\n\n**Data Summary:**\n- Measurements: 101, 99, 103, 98, 102, 100, 104, 97\n- Mean (X̄) = 804/8 = **100.5**\n- Standard deviation (s) = √(42/7) = **2.449**\n\n**Cp (Process Capability):**\n$$C_p = \\frac{USL - LSL}{6\\sigma} = \\frac{110 - 95}{6 \\times 2.449} = \\frac{15}{14.69} = \\boxed{1.02}$$\n\n**Cpk (Process Capability Index):**\n\nCPU = (110 − 100.5)/(3 × 2.449) = 1.293\nCPL = (100.5 − 95)/(3 × 2.449) = 0.749\n\n$$C_{pk} = \\min(CPU, CPL) = \\boxed{0.75}$$\n\n**Interpretation:** Cp=1.02 indicates adequate spread, but Cpk=0.75 (< 1.33) signals the process is **off-center**, skewed toward the lower limit. The process mean is closer to LSL, creating higher risk of non-conformance below spec.",
+   "rag_ok": true,
+   "baseline_ok": true,
+   "expected_cpk": 0.748
+  },
+  {
+   "id": "t05",
+   "type": "tool",
+   "rag_answer": "Results: Cp = 0.891, Cpk = 0.802 (n=6, mean=0.505, s=0.0187). Both indices fall below the desired minimum of 1.0 [c0016, c0017], indicating inadequate process capability. Per the passages, the process should be centered at the midpoint (0.50) and/or variability reduced. Note: Sample size is 6, below the recommended 50 for valid capability estimates [c0011].",
+   "rag_refused": false,
+   "rag_citations": [
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+    "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm"
+   ],
+   "baseline_answer": "**Cp ≈ 0.89** | **Cpk ≈ 0.80**\n\n**Calculation:**\n\nMean: x̄ = (0.52 + 0.49 + 0.51 + 0.5 + 0.53 + 0.48) / 6 = 0.505\n\nSample std dev: s = √[Σ(xᵢ − x̄)² / (n−1)] = √0.00175 / 5 ≈ 0.0187\n\n**Cp** = (USL − LSL) / 6s = 0.10 / (6 × 0.0187) ≈ **0.89**\n\n**Cpk** = min[(USL − x̄) / 3s, (x̄ − LSL) / 3s] = min[0.045/0.056, 0.055/0.056] = **0.80**\n\n**Interpretation:** Both indices < 1.33, indicating **marginal capability**. The process is slightly off-center toward the lower spec; adjust centering to improve Cpk.",
+   "rag_ok": true,
+   "baseline_ok": false,
+   "expected_cpk": 0.802
+  }
+ ]
+}

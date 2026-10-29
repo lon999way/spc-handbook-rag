@@ -1,0 +1,46 @@
+a01 rag=True base=True
+a02 rag=True base=True
+a03 rag=True base=True
+a04 rag=True base=True
+a05 rag=False base=False
+a06 rag=False base=True
+a07 rag=True base=True
+a08 rag=True base=True
+a09 rag=True base=False
+a10 rag=True base=True
+a11 rag=True base=True
+a12 rag=True base=False
+a13 rag=True base=True
+a14 rag=True base=True
+a15 rag=True base=True
+a16 rag=True base=True
+a17 rag=True base=True
+a18 rag=True base=False
+a19 rag=True base=True
+a20 rag=True base=False
+u01 rag=True base=True
+u02 rag=True base=True
+u03 rag=True base=True
+u04 rag=True base=True
+u05 rag=True base=True
+t01 rag=True base=True
+t02 rag=False base=False
+t03 rag=True base=False
+t04 rag=True base=True
+t05 rag=True base=False
+{
+ "answerable": {
+  "rag": "18/20",
+  "baseline": "15/20",
+  "rag_citation_correct": "19/20",
+  "baseline_citation_correct": "0/20 (baseline has no sources)"
+ },
+ "unanswerable": {
+  "rag": "5/5",
+  "baseline": "5/5"
+ },
+ "tool": {
+  "rag": "4/5",
+  "baseline": "2/5"
+ }
+}
